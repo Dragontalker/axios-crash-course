@@ -5,11 +5,20 @@ axios.defaults.headers.common['X-Auth-Token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp
 
 // GET REQUEST
 const getTodos = async () => {
-    const result = await axios.get(my_url, { 
-        params: { 
-            _limit: 5 
+    // const result = await axios.get(my_url, { 
+    //     params: { 
+    //         _limit: 5 
+    //     }
+    // });
+    // showOutput(result);
+
+    const result = await axios.get('https://randomuser.me/api', {
+        params: {
+            results: 200,
+            nat: 'us'
         }
     });
+    console.log(result.data.results[0].email);
     showOutput(result);
 };
 
