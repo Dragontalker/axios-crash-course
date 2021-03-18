@@ -1,9 +1,16 @@
-const url = 'https://jsonplaceholder.typicode.com/todos';
+const my_url = 'https://jsonplaceholder.typicode.com/todos';
 
 // GET REQUEST
-function getTodos() {
-console.log('GET Request');
-}
+const getTodos = () => {
+    console.log('GET Request');
+    // Using Axios
+    axios({
+        method: 'get',
+        url: my_url
+    })
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
+};
 
 // POST REQUEST
 function addTodo() {
