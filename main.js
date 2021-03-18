@@ -2,8 +2,6 @@ const my_url = 'https://jsonplaceholder.typicode.com/todos';
 
 // GET REQUEST
 const getTodos = async () => {
-    console.log('GET Request');
-    // Using Axios
     const result = await axios.get(my_url, { 
         params: { 
             _limit: 5 
@@ -13,9 +11,15 @@ const getTodos = async () => {
 };
 
 // POST REQUEST
-function addTodo() {
-console.log('POST Request');
-}
+const addTodo = async () => {
+    const result = await axios.post(my_url, {
+        data: {
+            title: 'New Todo',
+            completed: false
+        }
+    });
+    showOutput(result);
+};
 
 // PUT/PATCH REQUEST
 function updateTodo() {
