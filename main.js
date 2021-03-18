@@ -4,7 +4,11 @@ const my_url = 'https://jsonplaceholder.typicode.com/todos';
 const getTodos = async () => {
     console.log('GET Request');
     // Using Axios
-    const result = await axios({ method: 'get', url: my_url });
+    const result = await axios.get(my_url, { 
+        params: { 
+            _limit: 5 
+        }
+    });
     showOutput(result);
 };
 
