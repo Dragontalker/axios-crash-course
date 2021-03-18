@@ -21,9 +21,20 @@ const addTodo = async () => {
     showOutput(result);
 };
 
-// PUT/PATCH REQUEST
-const updateTodo = async () => {
-    const result = await axios.post(my_url, {
+// PUT REQUEST
+const putTodo = async () => {
+    const result = await axios.put(`${my_url}/1`, {
+        data: {
+            title: 'Updated ToDo',
+            completed: true
+        }
+    });
+    showOutput(result);
+};
+
+// PUT REQUEST
+const patchTodo = async () => {
+    const result = await axios.patch(`${my_url}/1`, {
         params: {
             id: 1
         },
@@ -106,7 +117,8 @@ const showOutput = (res) => {
 // Event listeners
 document.getElementById('get').addEventListener('click', getTodos);
 document.getElementById('post').addEventListener('click', addTodo);
-document.getElementById('update').addEventListener('click', updateTodo);
+document.getElementById('put').addEventListener('click', putTodo);
+document.getElementById('patch').addEventListener('click', patchTodo);
 document.getElementById('delete').addEventListener('click', removeTodo);
 document.getElementById('sim').addEventListener('click', getData);
 document.getElementById('headers').addEventListener('click', customHeaders);
