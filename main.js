@@ -22,9 +22,19 @@ const addTodo = async () => {
 };
 
 // PUT/PATCH REQUEST
-function updateTodo() {
-console.log('PUT/PATCH Request');
-}
+const updateTodo = async () => {
+    const result = await axios.post(my_url, {
+        params: {
+            id: 1
+        },
+
+        data: {
+            title: 'Updated ToDo',
+            completed: true
+        }
+    });
+    showOutput(result);
+};
 
 // DELETE REQUEST
 function removeTodo() {
