@@ -48,9 +48,10 @@ const patchTodo = async () => {
 };
 
 // DELETE REQUEST
-function removeTodo() {
-console.log('DELETE Request');
-}
+const removeTodo = async () => {
+    const result = await axios.delete(`${my_url}/1`);
+    showOutput(result);
+};
 
 // SIMULTANEOUS DATA
 function getData() {
