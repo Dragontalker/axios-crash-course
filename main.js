@@ -54,9 +54,13 @@ const removeTodo = async () => {
 };
 
 // SIMULTANEOUS DATA
-function getData() {
-console.log('Simultaneous Request');
-}
+const getData = async () =>{
+    const [ res1, res2 ] = await axios.all([
+        axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5'),
+        axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+    ]);
+    showOutput(res2);
+};
 
 // CUSTOM HEADERS
 function customHeaders() {
