@@ -81,9 +81,22 @@ const customHeaders = async () => {
 };
 
 // TRANSFORMING REQUESTS & RESPONSES
-function transformResponse() {
-console.log('Transform Response');
-}
+const transformResponse = async () => {
+    const options = {
+        method: 'post',
+        url: my_url,
+        data: {
+            title: 'Hello World'
+        },
+        transformResponse: axios.defaults.transformResponse.concat(data => {
+            data.title = data.title.toUpperCase();
+            return data;
+        })
+    }
+
+    const result = await axios(options);
+    showOutput(result);
+};
 
 // ERROR HANDLING
 function errorHandling() {
