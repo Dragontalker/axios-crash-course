@@ -63,9 +63,22 @@ const getData = async () =>{
 };
 
 // CUSTOM HEADERS
-function customHeaders() {
-console.log('Custom Headers');
-}
+const customHeaders = async () => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'sometoken'
+        }
+    }
+    const result = await axios.put(`${my_url}/1`, {
+        data: {
+            title: 'Updated ToDo',
+            completed: true
+        }},
+        config
+    );
+    showOutput(result);
+};
 
 // TRANSFORMING REQUESTS & RESPONSES
 function transformResponse() {
@@ -83,6 +96,20 @@ console.log('Cancel Token');
 }
 
 // INTERCEPTING REQUESTS & RESPONSES
+axios.interceptors.request.use(
+    config => {
+        console.log(
+            `${config.method.toUpperCase()} requst sent to ${
+                config.url
+            } at ${new Date().toISOString()}`
+        );
+
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
 
 // AXIOS INSTANCES
 
@@ -127,8 +154,6 @@ document.getElementById('patch').addEventListener('click', patchTodo);
 document.getElementById('delete').addEventListener('click', removeTodo);
 document.getElementById('sim').addEventListener('click', getData);
 document.getElementById('headers').addEventListener('click', customHeaders);
-document
-.getElementById('transform')
-.addEventListener('click', transformResponse);
+document.getElementById('transform').addEventListener('click', transformResponse);
 document.getElementById('error').addEventListener('click', errorHandling);
 document.getElementById('cancel').addEventListener('click', cancelToken);
