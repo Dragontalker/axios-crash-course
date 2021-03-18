@@ -1,15 +1,11 @@
 const my_url = 'https://jsonplaceholder.typicode.com/todos';
 
 // GET REQUEST
-const getTodos = () => {
+const getTodos = async () => {
     console.log('GET Request');
     // Using Axios
-    axios({
-        method: 'get',
-        url: my_url
-    })
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
+    const result = await axios({ method: 'get', url: my_url });
+    console.log(result);
 };
 
 // POST REQUEST
