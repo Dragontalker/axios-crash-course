@@ -1,3 +1,5 @@
+const url = 'https://jsonplaceholder.typicode.com/todos';
+
 // GET REQUEST
 function getTodos() {
 console.log('GET Request');
